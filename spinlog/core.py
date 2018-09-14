@@ -17,5 +17,9 @@ class SpinLogger():
         self._spinner = spinner
 
     def log(self, message):
-        self._spinner.info(message)
+        self._spinner.info(message).start()
+
+    def debug(self, message):
+        self._spinner.clear()
+        print(f"DEBUG {message}")
         self._spinner.start()
