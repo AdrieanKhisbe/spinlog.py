@@ -1,10 +1,10 @@
 from halo import Halo
-from time import sleep
 
-spinner = Halo(text='Loading', spinner='dots')
-spinner.start()
-sleep(2)
-spinner.info('Yoyo')
-spinner.start()
-sleep(2)
-spinner.stop()
+class LogProgress():
+    def __init__(self, message):
+        self.message = message
+        self.spinner = Halo(text=message)
+    def __enter__(self):
+        self.spinner.start()
+    def __exit__(self, type, value, traceback):
+        self.spinner.stop()
