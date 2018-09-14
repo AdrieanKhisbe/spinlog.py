@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from halo import Halo
 
 class LogProgress():
@@ -16,10 +17,17 @@ class SpinLogger():
     def __init__(self, spinner):
         self._spinner = spinner
 
-    def log(self, message):
+    def error(self, message):
+        self._spinner.fail(message).start()
+
+    def warn(self, message):
+        self._spinner.warn(message).start()
+
+    def info(self, message):
         self._spinner.info(message).start()
 
     def debug(self, message):
-        self._spinner.clear()
-        print(f"DEBUG {message}")
-        self._spinner.start()
+        self._spinner.stop_and_persist(symbol="🐛".encode("utf-8"), text=message).start()
+
+    def log(self, message, symbol=" "):
+        self._spinner.stop_and_persist(symbol=symbol, text=message).start()
