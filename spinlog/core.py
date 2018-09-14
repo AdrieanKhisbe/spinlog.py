@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from halo import Halo
 
+
 class LogProgress():
     def __init__(self, message):
         self.message = message
