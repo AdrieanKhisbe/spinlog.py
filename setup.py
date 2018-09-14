@@ -3,11 +3,14 @@
  
 from setuptools import setup, find_packages
 import spinlog
+
+
+with open('spinlog/.version') as f:
+    version = f.read()
  
 setup(
     name='spinlog',
- 
-    version=spinlog.__version__,
+    version=version,
     packages=find_packages(),
     author="AdrieanKhisbe",
     author_email="adriean.khisbe@live.fr",
