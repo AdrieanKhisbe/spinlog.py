@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
  
 from setuptools import setup, find_packages
-import spinlog
-
 
 with open('spinlog/.version') as f:
     version = f.read()
