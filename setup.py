@@ -9,7 +9,7 @@ with open('spinlog/.version') as f:
 setup(
     name='spinlog',
     version=version,
-    packages=find_packages(),
+    packages=["spinlog"],
     author="AdrieanKhisbe",
     author_email="adriean.khisbe@live.fr",
     description="Spinner Logger for Python",
