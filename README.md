@@ -1,4 +1,4 @@
-# spinglog.py
+# spinlog.py
 
 [![PyPI](https://img.shields.io/pypi/v/spinlog.svg)](https://pypi.org/project/spinlog/)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/spinlog.svg)](https://pypi.python.org/pypi/spinlog)
