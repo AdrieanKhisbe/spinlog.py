@@ -8,6 +8,10 @@ halo = "*"
 
 [dev-packages]
 twine = "*"
+tox-travis = "*"
+tox-pyenv = "*"
+pytest = "*"
+tox = "*"
 
 [requires]
 python_version = "3.7"
