@@ -17,6 +17,9 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=["halo"],
     include_package_data=True,
+    setup_requires=["pytest-runner"],
+    tests_require=["tox", "pytest"],
+    test_suite="tests",
     url='http://github.com/AdrieanKhisbe/spinlog.py',
     keywords="cli terminal log logger logging shell update animation progress",
     classifiers=[
