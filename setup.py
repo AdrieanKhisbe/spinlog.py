@@ -14,9 +14,11 @@ setup(
     author_email="adriean.khisbe@live.fr",
     description="Spinner Logger for Python",
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     install_requires=["halo"],
     include_package_data=True,
     url='http://github.com/AdrieanKhisbe/spinlog.py',
+    keywords="cli terminal log logger logging shell update animation progress",
     classifiers=[
         "Programming Language :: Python",
         "Development Status :: 3 - Alpha",
