@@ -1,5 +1,9 @@
 # spinglog.py
 
+[![PyPI](https://img.shields.io/pypi/v/spinlog.svg)](https://pypi.org/project/spinlog/)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/spinlog.svg)](https://pypi.python.org/pypi/spinlog)
+[![Build Status](https://travis-ci.org/AdrieanKhisbe/spinlog.py.svg?branch=master)](https://travis-ci.org/AdrieanKhisbe/spinlog.py)
+
 > Spinner Logger for Python
 
 ## Installation
