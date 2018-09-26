@@ -3,6 +3,16 @@ from halo import Halo
 import textwrap
 
 
+class Spinner():
+    def __init__(self, is_spinning=None, alternative_logger=None, concommitant_logger=None):
+        self.alternative_logger = alternative_logger
+        self.concommitant_logger = concommitant_logger
+        self.spinning = is_spinning is None or is_spinning
+    def __call__(self, message):
+        return LogProgress(message, is_spinning=self.spinning,
+                           alternative_logger=self.alternative_logger,
+                           concommitant_logger=self.concommitant_logger)
+
 class LogProgress():
     def __init__(self, message,
                  is_spinning=None, alternative_logger=None, concommitant_logger=None):
@@ -11,7 +21,6 @@ class LogProgress():
         self.alternative_logger = alternative_logger
         self.concommitant_logger = concommitant_logger
         self.spinning = is_spinning is None or is_spinning
-        print(is_spinning, self.spinning)
 
     def __enter__(self):
         if self.spinning:

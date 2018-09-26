@@ -1,4 +1,4 @@
-from spinlog import LogProgress
+from spinlog import Spinner
 from time import sleep
 import logging
 import sys
@@ -22,13 +22,19 @@ stream_logger.addHandler(stream_handler)
 
 should_spin = "--no-spin" not in sys.argv
 print(f"Demo {'with' if should_spin else 'without'} spinner")
-with LogProgress("yolololo", is_spinning=should_spin, alternative_logger=stream_logger, concommitant_logger=file_logger) as s:
+
+
+spinner = Spinner(is_spinning=should_spin, alternative_logger=stream_logger, concommitant_logger=file_logger)
+
+with spinner("test 1") as s:
     sleep(2)
     s.warn("ah bon?")
     sleep(2)
     s.error("BIM\nBIM")
     sleep(2)
     s.info("HAHA\nHAHA")
+
+with spinner("test 2") as s:
     s.log("HAHA")
     s.log("HAHA", symbol="😆".encode("utf-8"))
     sleep(2)
