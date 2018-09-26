@@ -13,3 +13,4 @@ with LogProgress("yolololo") as s:
     sleep(2)
     s.debug("HAHA oui c'est drole")
     sleep(2)
+
