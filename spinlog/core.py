@@ -38,7 +38,9 @@ class LogProgress():
 
 
 def handle_multiline(string):
-    if "\n" in string:
+    if not string:
+        return string
+    elif "\n" in string:
         return textwrap.indent(string, '  ')[2:]
     else:
         return string
@@ -54,47 +56,50 @@ class SpinLogger():
         if color: self._spinner.color = color
         if spinner: self._spinner.spinner = spinner
 
-    def error(self, message):
+    def error(self, message=None):
         self._spinner.fail(handle_multiline(message)).start()
-        if self._logger: self._logger.error(message)
+        if self._logger: self._logger.error(message or self._spinner.text)
 
-    def warn(self, message):
+    def warn(self, message=None):
         self._spinner.warn(handle_multiline(message)).start()
-        if self._logger: self._logger.warn(message)
+        if self._logger: self._logger.warn(message or self._spinner.text)
 
-    def info(self, message):
+    def info(self, message=None):
         self._spinner.info(handle_multiline(message)).start()
-        if self._logger: self._logger.info(message)
+        if self._logger: self._logger.info(message or self._spinner.text)
 
-    def debug(self, message):
+    def debug(self, message=None):
         self._spinner.stop_and_persist(symbol="🐛".encode(
             "utf-8"), text=handle_multiline(message)).start()
-        if self._logger: self._logger.debug(message)
+        if self._logger: self._logger.debug(message or self._spinner.text)
 
-    def log(self, message, symbol=" "):
+    def log(self, message=None, symbol=" "):
         self._spinner.stop_and_persist(
             symbol=symbol, text=handle_multiline(message)).start()
-        if self._logger: self._logger.info((symbol.decode("utf-8") + " " if symbol and symbol != " " else "") + message)
+        if self._logger: self._logger.info((symbol.decode("utf-8") + " " 
+                                           if symbol and symbol != " " else "") + 
+                                           (message or self._spinner.text))
 
 
 class BasicLogger():
     def __init__(self, logger):
         self._logger = logger
+        self.text = "TODO"
 
     def update_spinner(self, message, color=None, spinner=None):
-        pass
+        self.message = message
 
-    def error(self, message):
-        self._logger.error(message)
+    def error(self, message=None):
+        self._logger.error(message or self.text)
 
-    def warn(self, message):
-        self._logger.warn(message)
+    def warn(self, message=None):
+        self._logger.warn(message or self.text)
 
-    def info(self, message):
-        self._logger.info(message)
+    def info(self, message=None):
+        self._logger.info(message or self.text)
 
-    def debug(self, message):
-        self._logger.debug(message)
+    def debug(self, message=None):
+        self._logger.debug(message or self.text)
 
-    def log(self, message, symbol=""):
-        self._logger.info((symbol.decode("utf-8") + " " if symbol else "") + message)
+    def log(self, message=None, symbol=""):
+        self._logger.info((symbol.decode("utf-8") + " " if symbol else "") + (message or self.text))

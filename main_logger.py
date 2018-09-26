@@ -43,5 +43,6 @@ with spinner("test 2", spinner="circle") as s:
     s.log("HAHA", symbol="😆".encode("utf-8"))
     sleep(2)
     s.debug("HAHA oui c'est drole")
+    s.info()
     sleep(2)
 
