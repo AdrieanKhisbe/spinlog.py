@@ -31,11 +31,14 @@ with spinner("test 1") as s:
     s.warn("ah bon?")
     sleep(2)
     s.error("BIM\nBIM")
+    s.update_spinner("BAAAAM", spinner="triangle")
     sleep(2)
     s.info("HAHA\nHAHA")
 
 with spinner("test 2") as s:
-    s.log("HAHA")
+    s.log("BOUH")
+    sleep(1)
+    s.update_spinner("Ha Ha Ha", color="yellow")
     s.log("HAHA", symbol="😆".encode("utf-8"))
     sleep(2)
     s.debug("HAHA oui c'est drole")

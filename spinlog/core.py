@@ -46,6 +46,11 @@ class SpinLogger():
         self._spinner = spinner
         self._logger = logger
 
+    def update_spinner(self, message, color=None, spinner=None):
+        self._spinner.text = message
+        if color: self._spinner.color = color
+        if spinner: self._spinner.spinner = spinner
+
     def error(self, message):
         self._spinner.fail(handle_multiline(message)).start()
         if self._logger: self._logger.error(message)
@@ -72,6 +77,9 @@ class SpinLogger():
 class BasicLogger():
     def __init__(self, logger):
         self._logger = logger
+
+    def update_spinner(self, message, color=None, spinner=None):
+        pass
 
     def error(self, message):
         self._logger.error(message)
