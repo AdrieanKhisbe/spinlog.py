@@ -30,7 +30,7 @@ class LogProgress():
             self.spinner.start()
             return SpinLogger(self.spinner, self.concommitant_logger)
         else:
-            return BasicLogger(self.alternative_logger)
+            return BasicLogger(self.message, self.alternative_logger)
 
     def __exit__(self, type, value, traceback):
         if self.spinning:
@@ -82,24 +82,24 @@ class SpinLogger():
 
 
 class BasicLogger():
-    def __init__(self, logger):
+    def __init__(self, message, logger):
         self._logger = logger
-        self.text = "TODO"
+        self.message = message
 
     def update_spinner(self, message, color=None, spinner=None):
         self.message = message
 
     def error(self, message=None):
-        self._logger.error(message or self.text)
+        self._logger.error(message or self.message)
 
     def warn(self, message=None):
-        self._logger.warn(message or self.text)
+        self._logger.warn(message or self.message)
 
     def info(self, message=None):
-        self._logger.info(message or self.text)
+        self._logger.info(message or self.message)
 
     def debug(self, message=None):
-        self._logger.debug(message or self.text)
+        self._logger.debug(message or self.message)
 
     def log(self, message=None, symbol=""):
-        self._logger.info((symbol.decode("utf-8") + " " if symbol else "") + (message or self.text))
+        self._logger.info((symbol.decode("utf-8") + " " if symbol else "") + (message or self.message))
