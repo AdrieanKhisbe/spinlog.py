@@ -24,18 +24,19 @@ should_spin = "--no-spin" not in sys.argv
 print(f"Demo {'with' if should_spin else 'without'} spinner")
 
 
-spinner = Spinner(is_spinning=should_spin, alternative_logger=stream_logger, concommitant_logger=file_logger)
+spinner = Spinner(spinner="triangle", is_spinning=should_spin,
+                  alternative_logger=stream_logger, concommitant_logger=file_logger)
 
 with spinner("test 1") as s:
     sleep(2)
     s.warn("ah bon?")
     sleep(2)
     s.error("BIM\nBIM")
-    s.update_spinner("BAAAAM", spinner="triangle")
+    s.update_spinner("BAAAAM")
     sleep(2)
     s.info("HAHA\nHAHA")
 
-with spinner("test 2") as s:
+with spinner("test 2", spinner="circle") as s:
     s.log("BOUH")
     sleep(1)
     s.update_spinner("Ha Ha Ha", color="yellow")

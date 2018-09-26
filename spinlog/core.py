@@ -4,20 +4,23 @@ import textwrap
 
 
 class Spinner():
-    def __init__(self, is_spinning=None, alternative_logger=None, concommitant_logger=None):
+    def __init__(self, is_spinning=None, alternative_logger=None, concommitant_logger=None,
+                 spinner=None):
+        self.spinner = spinner
         self.alternative_logger = alternative_logger
         self.concommitant_logger = concommitant_logger
         self.spinning = is_spinning is None or is_spinning
-    def __call__(self, message):
-        return LogProgress(message, is_spinning=self.spinning,
+    def __call__(self, message, spinner=None):
+        return LogProgress(message, spinner=(spinner or self.spinner),
+                           is_spinning=self.spinning,
                            alternative_logger=self.alternative_logger,
                            concommitant_logger=self.concommitant_logger)
 
 class LogProgress():
-    def __init__(self, message,
+    def __init__(self, message, spinner=None,
                  is_spinning=None, alternative_logger=None, concommitant_logger=None):
         self.message = message
-        self.spinner = Halo(text=message)
+        self.spinner = Halo(text=message, spinner=spinner)
         self.alternative_logger = alternative_logger
         self.concommitant_logger = concommitant_logger
         self.spinning = is_spinning is None or is_spinning
