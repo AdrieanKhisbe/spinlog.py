@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# When cloning the project, to be run with 'pipenv run python examples/main.py'
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+## ^^ Do not use statement up when installing library ^^
+
 from spinlog import Spinner
 from time import sleep
 
