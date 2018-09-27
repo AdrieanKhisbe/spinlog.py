@@ -1,7 +1,7 @@
-from spinlog import LogProgress
+from spinlog import Spinner
 from time import sleep
 
-with LogProgress("yolololo") as s:
+with Spinner.get("yolololo") as s:
     sleep(2)
     s.warn("ah bon?")
     sleep(2)

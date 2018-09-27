@@ -15,6 +15,9 @@ class Spinner():
                            is_spinning=self.spinning,
                            alternative_logger=self.alternative_logger,
                            concommitant_logger=self.concommitant_logger)
+    @classmethod
+    def get(cls, message):
+        return LogProgress(message)
 
 class LogProgress():
     def __init__(self, message, spinner=None,
