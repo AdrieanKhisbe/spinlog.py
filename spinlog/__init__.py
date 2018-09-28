@@ -9,4 +9,4 @@ from os.path import join, dirname
 with open(join(dirname(__file__), '.version')) as f:
     __version__ = f.read()
 
-from .core import LogProgress
+from .core import Spinner
