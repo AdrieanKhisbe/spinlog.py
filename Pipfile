@@ -21,3 +21,5 @@ python_version = "3.7"
 [scripts]
 example_simple = "python examples/simple.py"
 example_logger = "python examples/with_logger.py"
+build = "python setup.py sdist bdist_wheel"
+publish = "twine upload dist/*"
