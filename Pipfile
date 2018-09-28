@@ -12,6 +12,8 @@ tox-travis = "*"
 tox-pyenv = "*"
 pytest = "*"
 tox = "*"
+pytest-cov = "*"
+codecov = "*"
 
 [requires]
 python_version = "3.7"
